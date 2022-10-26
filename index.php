@@ -1,7 +1,7 @@
 <?php
 session_start();
-$urladmin ="http://localhost:8080/STORE STOYS/admin/";
-$urluser ="http://localhost:8080/STORE STOYS/";
+//$urladmin ="http://localhost:8080/STORE STOYS/admin/";
+//$urluser ="http://localhost:8080/STORE STOYS/";
 $home = "home.php";
 $register = "register.php";
 $shoppingcart = "shoppingcart.php";
