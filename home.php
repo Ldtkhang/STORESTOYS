@@ -4,7 +4,7 @@
 </div>
 <div class="row">
     <?php
-    $sql = "SELECT * FROM product a left join category b on a.catid = b.catid ";
+    $sql = "SELECT * FROM product";
     $result = pg_query($conn, $sql);
     while ($row = pg_fetch_array($result)) {
     ?>
