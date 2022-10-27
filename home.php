@@ -6,7 +6,7 @@
     <?php
     $sql = "SELECT * FROM product";
     $result = pg_query($conn, $sql);
-    while ($row = pg_fetch_array($result)) {
+    while ($row = pg_fetch_assoc($result)) {
     ?>
         <div class="col-sm-4">
             <div class="panel">
