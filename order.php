@@ -4,9 +4,9 @@ if (isset($_SESSION['usname']) == "") {
     echo '<meta http-equiv="refresh" content="0;URL=?page=login.php"/>';
 } else {
     $sql = "SELECT * FROM orders where usid = " . $_SESSION['usid'];
-    $result = mysqli_query($conn, $sql);
+    $result = pg_query($conn, $sql);
 
-    if (mysqli_num_rows($result) == 0) {
+    if (pg_num_rows($result) == 0) {
 ?>
         <div class="container-fluid  mt-100">
             <div class="row">
@@ -51,8 +51,8 @@ if (isset($_SESSION['usname']) == "") {
             <tbody>
                 <?php
                 $sql = "select * from orders where usid = '" . $_SESSION['usid'] . "'";
-                $result = mysqli_query($conn, $sql);
-                while ($row = mysqli_fetch_array($result)) {
+                $result = pg_query($conn, $sql);
+                while ($row = pg_fetch_array($result)) {
                 ?>
                     <tr>
                         <td scope="row"><?php echo $row['orid']; ?></td>

@@ -8,11 +8,11 @@ if (isset($_SESSION['usname']) == "") {
 
     $sql = "select * from cart where usid='" . $usid . "' and proid='" . $proid . "' ";
 
-    $result = mysqli_query($conn, $sql);
+    $result = pg_query($conn, $sql);
 
-    if (mysqli_num_rows($result) == 0) {
+    if (pg_num_rows($result) == 0) {
         $sql = "INSERT INTO cart (usid, proid, cartquantity) VALUES('$usid', '$proid',1)";
-        mysqli_query($conn, $sql);
+        pg_query($conn, $sql);
         echo '<script>alert ("ADD PRODUCT TO CART SUCCESSFUL")</script>';
         echo '<meta http-equiv="refresh" content="0;URL=?page=shoppingcart.php"/>';
     } else {

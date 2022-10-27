@@ -5,7 +5,7 @@ if (isset($_POST['btnSubmit'])) {
     $quantity = $_POST['cartquantity'];
 
     $sql = "UPDATE cart SET cartquantity=" . $quantity . " WHERE usid=" . $us_id . " and proid=" . $pro_id;
-    mysqli_query($conn, $sql);
+    pg_query($conn, $sql);
     echo '<script>alert("UPDATED SUCCESSFUL")</script>';
 }
 ?>
@@ -26,8 +26,8 @@ if (isset($_POST['btnSubmit'])) {
     <tbody>
         <?php
         $sql = "SELECT * FROM cart a left join product b on a.proid = b.proid where a.usid = " . $_SESSION['usid'];
-        $result = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_array($result)) {
+        $result = pg_query($conn, $sql);
+        while ($row = pg_fetch_array($result)) {
         ?>
             <tr>
                 <td scope="row"><?php echo $row['proname']; ?></td>

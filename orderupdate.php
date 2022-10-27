@@ -11,10 +11,10 @@ if (isset($_POST['btnSubmit'])) {
 
         $sql = "select * from orders where orid='".$orid."'"  ;
         echo $sql;
-        $result = mysqli_query($conn, $sql);
-        if (mysqli_num_rows($result) == 1) {
+        $result = pg_query($conn, $sql);
+        if (pg_num_rows($result) == 1) {
         $sql = "UPDATE orders  SET orid = '$orid', ordate = '$ordate', usname ='$orname',oraddress='$oraddress',usemail='$oremail',usphone='$ortel' WHERE orid = '$orid'";
-            mysqli_query($conn, $sql);
+            pg_query($conn, $sql);
             echo '<script>alert("UPDATE SUCCESSFUL")</script>';
             echo '<meta http-equiv="refresh" content="0;URL=?page=order.php"/>';
         } else {
@@ -30,8 +30,8 @@ if (isset($_POST['btnSubmit'])) {
         $oremail = "";
         $ortel = "";
         $sql = "select * from orders where orid='".$_GET['id']."'";
-        $results = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_array($results)) {
+        $results = pg_query($conn, $sql);
+        while ($row = pg_fetch_array($results)) {
             $orname = $row['usname'];
             $ordate = $row['ordate'];
             $oraddress = $row['oraddress'];

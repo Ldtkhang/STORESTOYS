@@ -14,13 +14,13 @@ if (isset($_POST['btnSubmit'])) {
         $passwordmd5 = md5($password);
 
         $sql = "select * from user where usname='" . $username . "' and uspassword='" . $passwordmd5 . "' and usrole ='" . $role . "' ";
-        $result = mysqli_query($conn, $sql);
+        $result = pg_query($conn, $sql);
 
-        if (mysqli_num_rows($result) == 1) {
+        if (pg_num_rows($result) == 1) {
 
             $_SESSION["usname"] = $username;
 
-            while ($row = mysqli_fetch_array($result)) {
+            while ($row = pg_fetch_array($result)) {
                 $_SESSION["usid"] = $row['usid'];
                 $_SESSION["usrole"] = $row['usrole'];
             }
@@ -30,13 +30,13 @@ if (isset($_POST['btnSubmit'])) {
         } elseif (isset($_POST['btnSubmit'])) {
             $role = 'admin';
             $sql = "select * from user where usname='" . $username . "' and uspassword='" . $passwordmd5 . "' and usrole ='" . $role . "' ";
-            $result = mysqli_query($conn, $sql);
+            $result = pg_query($conn, $sql);
 
-            if (mysqli_num_rows($result) == 1) {
+            if (pg_num_rows($result) == 1) {
 
                 $_SESSION["usname"] = $username;
 
-                while ($row = mysqli_fetch_array($result)) {
+                while ($row = pg_fetch_array($result)) {
                     $_SESSION["usid"] = $row['usid'];
                     $_SESSION["usrole"] = $row['usrole'];
                 }

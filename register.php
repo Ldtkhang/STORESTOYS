@@ -38,12 +38,12 @@ if (isset($_POST['btnSubmit'])) {
         $passwordmd5 = md5($password1);
 
         $sql = "select * from user where usname ='" . $username . "'";
-        $result = mysqli_query($conn, $sql);
+        $result = pg_query($conn, $sql);
 
-        if (mysqli_num_rows($result) == 0) {
+        if (pg_num_rows($result) == 0) {
             $sql = "INSERT INTO user (usname,uspassword,usrole,usfullname,usemail,usaddress,usphone,usgender,usdate,usmonth,usyear) 
             VALUES('$username','$passwordmd5','$role','$fullname','$email','$address','$tel','$sex','$date','$month','$year')";
-            mysqli_query($conn, $sql);
+            pg_query($conn, $sql);
             echo '<script>alert("REGISTER SUCCESSFULL")</script>';
             echo '<meta http-equiv="refresh" content="0;URL=?page=home.php"/>';
         } else {
