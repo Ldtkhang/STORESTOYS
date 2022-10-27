@@ -2,8 +2,8 @@
 $id = $_GET['id'];
 $sql = "SELECT * FROM `product` a 
     left join category b on a.catid = b.catid WHERE a.proid =" . $id;
-$result = mysqli_query($conn, $sql);
-while ($row = mysqli_fetch_array($result)) {
+$result = pg_query($conn, $sql);
+while ($row = pg_fetch_array($result)) {
 ?>
     <div class="row main">
         <h2 class="product text-center">PRODUCT DETAILS</h2>

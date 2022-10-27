@@ -13,13 +13,13 @@ if (isset($_POST['btnSubmit'])) {
 
         $sql = "select * from user where usid='" . $us_id . "' ";
 
-        $result = mysqli_query($conn, $sql);
+        $result = pg_query($conn, $sql);
 
-        if (mysqli_num_rows($result) == 1) {
+        if (pg_num_rows($result) == 1) {
 
             $sql = "INSERT INTO `orders` ( usid, usname, ordate, usphone, oraddress, usemail) 
             VALUES( '$us_id', '$us_name', '$or_date','$us_phone', '$or_address', '$us_email')";
-            mysqli_query($conn, $sql);
+            pg_query($conn, $sql);
             echo '<script>alert("ADD ORDER SUCCESSFUL")</script>';
             echo '<meta http-equiv="refresh" content="0;URL=?page=order.php"/>';
         } else {

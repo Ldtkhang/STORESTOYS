@@ -5,8 +5,8 @@
 <div class="row">
     <?php
     $sql = "SELECT * FROM `product` a left join category b on a.catid = b.catid ";
-    $result = mysqli_query($conn, $sql);
-    while ($row = mysqli_fetch_array($result)) {
+    $result = pg_query($conn, $sql);
+    while ($row = pg_fetch_array($result)) {
     ?>
         <div class="col-sm-4">
             <div class="panel">
