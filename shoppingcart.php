@@ -4,9 +4,9 @@ if (isset($_SESSION['usname']) == "") {
     echo '<meta http-equiv="refresh" content="0;URL=?page=login.php"/>';
 } else {
     $sql = "SELECT * FROM cart a left join product b on a.proid = b.proid where a.usid = " . $_SESSION['usid'];
-    $result = pg_query($conn, $sql);
+    $result = mysqli_query($conn, $sql);
 
-    if (pg_num_rows($result) == 0) {
+    if (mysqli_num_rows($result) == 0) {
 ?>
         <div class="container-fluid  mt-100">
             <div class="row">
@@ -49,7 +49,7 @@ if (isset($_SESSION['usname']) == "") {
             </thead>
             <tbody>
                 <?php
-                while ($row = pg_fetch_array($result)) {
+                while ($row = mysqli_fetch_array($result)) {
                 ?>
                     <tr>
                         <td scope="row"><?php echo $row['proname']; ?></td>
