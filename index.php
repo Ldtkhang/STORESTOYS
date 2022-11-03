@@ -2,14 +2,14 @@
 session_start();
 //$urladmin ="http://localhost:8080/STORE STOYS/admin/";
 //$urluser ="http://localhost:8080/STORE STOYS/";
-//$home = "home.php";
+$home = "home.php";
 $register = "register.php";
 $shoppingcart = "shoppingcart.php";
 $order = "order.php";
 $logout = "logout.php";
 
 //////////////////////////////////////////////////// Connection ////////////////////////////////////////////////
-///$host = "localhost";
+$host = "localhost";
 $username="root";
 $password="";
 $db= "myshop";
