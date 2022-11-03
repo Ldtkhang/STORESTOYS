@@ -9,7 +9,7 @@ $order = "order.php";
 $logout = "logout.php";
 
 //////////////////////////////////////////////////// Connection ////////////////////////////////////////////////
-$host = "localhost";
+///$host = "localhost";
 $username="root";
 $password="";
 $db= "myshop";

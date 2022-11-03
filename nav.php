@@ -12,8 +12,8 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <?php
             $sql = "select * from category";
-            $result = mysqli_query($conn, $sql);
-            while ($row = mysqli_fetch_array($result)) {
+            $result = pg_query($conn, $sql);
+            while ($row = pg_fetch_array($result)) {
             ?>
               <a href="?page=product.php&id=<?php echo $row['catid'] ?>"><?php echo $row['catname'] ?></a>
             <?php
