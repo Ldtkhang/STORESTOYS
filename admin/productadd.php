@@ -36,11 +36,11 @@ if (isset($_POST['btnSubmit'])) {
       /////////////////////////////////// insert new product //////////////////////////////
         $sql = "select * from product where proname='" . $name . "'";
 
-        $result = mysqli_query($conn, $sql);
+        $result = pg_query($conn, $sql);
 
-        if (mysqli_num_rows($result) == 0) {
+        if (pg_num_rows($result) == 0) {
           $sql = "INSERT INTO product (proid, proname, proprice, proquantity, proimage, prodescription, catid) VALUES('$id', '$name','$price','$quantity','$filePic','$description','$category');";
-          mysqli_query($conn, $sql);
+          pg_query($conn, $sql);
           echo '<script>alert("Add product successful")</script>';
           echo '<meta http-equiv="refresh" content="0;URL=?page=product.php"/>';
         } else {
@@ -66,8 +66,8 @@ if (isset($_POST['btnSubmit'])) {
       <option value='0'>Choose category</option>";
       <?php
       $sql = "select * from category";
-      $result = mysqli_query($conn, $sql);
-      while ($row = mysqli_fetch_array($result)) {
+      $result = pg_query($conn, $sql);
+      while ($row = pg_fetch_array($result)) {
       ?>
         <option value='<?php echo $row['catid'] ?>'><?php echo $row['catname'] ?></option>";
       <?php

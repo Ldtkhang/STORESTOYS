@@ -18,8 +18,8 @@
     <tbody>
         <?php
         $sql = "select * from user";
-        $result = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_array($result)) {
+        $result = pg_query($conn, $sql);
+        while ($row = pg_fetch_array($result)) {
         ?>
             <tr>
                 <td scope="row"><?php echo $row['usid']; ?></td>

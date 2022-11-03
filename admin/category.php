@@ -20,8 +20,8 @@ if ($conn->connect_error) {
     <tbody>
         <?php
         $sql = "select * from category";
-        $result = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_array($result)) {
+        $result = pg_query($conn, $sql);
+        while ($row = pg_fetch_array($result)) {
         ?>
             <tr>
                 <td scope="row"><?php echo $row['catid']; ?></td>

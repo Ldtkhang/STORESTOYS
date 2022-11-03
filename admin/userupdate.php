@@ -41,10 +41,10 @@ if (isset($_POST['btnSubmit'])) {
         $month = $_POST['month'];
         $date = $_POST['date'];
         $sql = "select * from user where usid='" . $_GET["id"] . "'";
-        $result = mysqli_query($conn, $sql);
-        if (mysqli_num_rows($result) == 1) {
+        $result = pg_query($conn, $sql);
+        if (pg_num_rows($result) == 1) {
             $sql = "UPDATE user  SET usfullname = '$fullname', usemail = '$email', usaddress ='$address',usphone='$tel',usgender='$gender',usyear='$year',usmonth='$month', usdate='$date'  WHERE usid = '$id'";
-            mysqli_query($conn, $sql);
+            pg_query($conn, $sql);
             echo '<script>alert("Update user successful")</script>';
             echo '<meta http-equiv="refresh" content="0;URL=?page=user.php"/>';
         } else {
@@ -62,8 +62,8 @@ if (isset($_POST['btnSubmit'])) {
         $month = "";
         $date = "";
         $sql = "select * from user where usid=" . $_GET["id"];
-        $results = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_array($results)) {
+        $results = pg_query($conn, $sql);
+        while ($row = pg_fetch_array($results)) {
             $fullname = $row["usfullname"];
             $email = $row["usemail"];
             $address = $row["usaddress"];

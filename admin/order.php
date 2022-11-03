@@ -16,8 +16,8 @@
     <tbody>
         <?php
         $sql = "SELECT * FROM orders a left join user b on a.usid=b.usid";
-        $result = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_array($result)) {
+        $result = pg_query($conn, $sql);
+        while ($row = pg_fetch_array($result)) {
         ?>
             <tr>
                 <td scope="row"><?php echo $row['orid']; ?></td>

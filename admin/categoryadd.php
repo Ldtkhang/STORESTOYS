@@ -16,10 +16,10 @@ if (isset($_POST['btnSubmit'])) {
     $cat_name = $_POST['name'];
     $cat_description = $_POST['description'];
     $sql = "select * from category where catname='" . $cat_name . "' or catid='" . $cat_id . "' ";
-    $result = mysqli_query($conn, $sql);
-    if (mysqli_num_rows($result) == 0) {
+    $result = pg_query($conn, $sql);
+    if (pg_num_rows($result) == 0) {
       $sql = "INSERT INTO category (CatID, CatName,catdescription) VALUES('$cat_id', '$cat_name','$cat_description')";
-      mysqli_query($conn, $sql);
+      pg_query($conn, $sql);
       echo '<script>alert("ADD CATEGORY SUCCESSFUL")</script>';
       echo '<meta http-equiv="refresh" content="0;URL=?page=category.php"/>';
     } else {

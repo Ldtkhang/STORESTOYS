@@ -34,11 +34,11 @@ if (isset($_POST['btnSubmit'])) {
                 $filePic = $pic['name'];
 
                 $sql = "select * from product where proname='" . $name . "'";
-                $result = mysqli_query($conn, $sql);
-                if (mysqli_num_rows($result) == 0) {
+                $result = pg_query($conn, $sql);
+                if (pg_num_rows($result) == 0) {
 
                     $sql = "UPDATE product SET proname = '$name', proprice = '$price', proquantity = '$quantity', proimage = '$filePic', prodescription = '$description' WHERE proid='$id'";
-                    mysqli_query($conn, $sql);
+                    pg_query($conn, $sql);
                     echo '<script>alert("Update product successful")</script>';
 
                     echo '<meta http-equiv="refresh" content="0;URL=?page=product.php"/>';
@@ -54,8 +54,8 @@ if (isset($_POST['btnSubmit'])) {
         $name = "";
         $description = "";
         $sql = "select * from product where proid=" . $_GET["id"];
-        $results = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_array($results)) {
+        $results = pg_query($conn, $sql);
+        while ($row = pg_fetch_array($results)) {
             $id = $row['proid'];
             $name = $row['proname'];
             $price = $row["proprice"];
@@ -78,8 +78,8 @@ if (isset($_POST['btnSubmit'])) {
             <option value='0'>Choose category</option>";
             <?php
             $sql = "select * from category";
-            $result = mysqli_query($conn, $sql);
-            while ($row = mysqli_fetch_array($result)) {
+            $result = pg_query($conn, $sql);
+            while ($row = pg_fetch_array($result)) {
             ?>
                 <option value='<?php echo $row['catid'] ?>'><?php echo $row['catname'] ?></option>";
             <?php

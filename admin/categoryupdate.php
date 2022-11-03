@@ -16,10 +16,10 @@ if (isset($_POST['btnSubmit'])) {
         $cat_name = $_POST['name'];
         $cat_description = $_POST['description'];
         $sql = "select * from category where catname='" . $cat_name . "'";
-        $result = mysqli_query($conn, $sql);
-        if (mysqli_num_rows($result) == 0) {
+        $result = pg_query($conn, $sql);
+        if (pg_num_rows($result) == 0) {
             $sql = "UPDATE category SET catname = '$cat_name', catdescription = '$cat_description' WHERE catid='$cat_id'";
-            mysqli_query($conn, $sql);
+            pg_query($conn, $sql);
             echo '<script>alert("UPDATE CATEGORY SUCCESSFUL")</script>';
             echo '<meta http-equiv="refresh" content="0;URL=?page=category.php"/>';
         } else {
@@ -32,8 +32,8 @@ if (isset($_POST['btnSubmit'])) {
         $name = "";
         $description = "";
         $sql = "select * from category where CatID=" . $_GET["id"];
-        $results = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_array($results)) {
+        $results = pg_query($conn, $sql);
+        while ($row = pg_fetch_array($results)) {
             $id = $row['catid'];
             $name = $row['catname'];
             $description = $row['catdescription'];

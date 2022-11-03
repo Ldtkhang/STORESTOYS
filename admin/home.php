@@ -14,8 +14,8 @@
     <tbody>
         <?php
         $sql = "SELECT * FROM category";
-        $result = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_array($result)) {
+        $result = pg_query($conn, $sql);
+        while ($row = pg_fetch_array($result)) {
         ?>
 
             <tr>
@@ -52,8 +52,8 @@
     <tbody>
         <?php
         $sql = "SELECT * FROM `product` a left join category b on a.catid = b.catid ";
-        $result = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_array($result)) {
+        $result = pg_query($conn, $sql);
+        while ($row = pg_fetch_array($result)) {
         ?>
             <tr>
                 <td scope="row"><?php echo $row['catid'] ?></td>
@@ -91,8 +91,8 @@
 
         <?php
         $sql = "SELECT * FROM user";
-        $result = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_array($result)) {
+        $result = pg_query($conn, $sql);
+        while ($row = pg_fetch_array($result)) {
         ?>
             <tr>
                 <td scope="row"><?php echo $row['usid']; ?></td>
